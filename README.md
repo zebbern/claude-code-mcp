@@ -24,8 +24,6 @@ claude
   <a href="#"></a> •
 </p>
 
-claude mcp add context7 -- npx -y @upstash/context7-mcp
-
 
 ### Claude-Flow / Multi-Agent Orchestration
 <kbd>npx claude-flow@latest init --sparc</kbd>
