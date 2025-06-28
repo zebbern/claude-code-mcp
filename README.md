@@ -21,7 +21,7 @@ export ANTHROPIC_API_KEY="sk-ant-api03-..."
 claude
 ```
 
-### Enhanced features with Claude-Flow / Multi-Agent Orchestration
+### Claude-Flow / Multi-Agent Orchestration
 <kbd>npx claude-flow@latest init --sparc</kbd>
 
 ```bash
