@@ -1,7 +1,7 @@
 <h2 align="center">Claude Code MCP Integration</h2>
 
 <p align="center">
-  <img src="images/tool_permissions.png" alt="CCI" width="600">
+  <img src="Images/tool_permissions.png" alt="CCI" width="600">
 </p>
 
 <p align="center">
