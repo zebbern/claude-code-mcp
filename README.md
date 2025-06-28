@@ -15,9 +15,6 @@ claude
 
 </div>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/d332f7e3-e1cf-4db2-80b2-1489376390f7" alt="CCI" width="800">
-</p>
 
 <p align="center">
   <a href="#"></a> •
