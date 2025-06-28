@@ -1,5 +1,18 @@
 <h2 align="center">Claude Code MCP Integration</h2>
 
+<div align="center">
+
+<kbd>
+  
+```bash
+npm install -g @anthropic-ai/claude-code
+export ANTHROPIC_API_KEY="sk-ant-api03-..." 
+claude 
+```
+</kbd>
+
+</div>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d332f7e3-e1cf-4db2-80b2-1489376390f7" alt="CCI" width="800">
 </p>
@@ -12,14 +25,6 @@
   <a href="#"></a> •
 </p>
 
-### Quick Install
-```bash
-npm install -g @anthropic-ai/claude-code
-
-export ANTHROPIC_API_KEY="sk-ant-api03-..."
-
-claude
-```
 
 ### Claude-Flow / Multi-Agent Orchestration
 <kbd>npx claude-flow@latest init --sparc</kbd>
