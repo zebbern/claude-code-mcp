@@ -1,14 +1,16 @@
-<h2 align="center">Claude Code MCP Integration</h2>
+<h3 align="center">Claude Code MCP Integration</h2>
 
 <div align="center">
 
 <kbd>
   
-```bash
+
 npm install -g @anthropic-ai/claude-code
+
 export ANTHROPIC_API_KEY="sk-ant-api03-..." 
+
 claude 
-```
+
 </kbd>
 
 </div>
