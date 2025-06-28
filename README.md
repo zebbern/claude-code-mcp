@@ -1,2 +1,10 @@
-# claude-code-mcp
-This guide provides comprehensive instructions for setting up various Model Context Protocol (MCP) servers with Claude Code. These tools dramatically enhance Claude Code's capabilities, allowing it to interact with your filesystem, web browsers, and more.
+<h2 align="center">Claude Code MCP Integration</h2>
+
+<p align="center">
+  <img src="images/tool_permissions.png" alt="CCI" width="600">
+</p>
+
+<p align="center">
+  <strong>The Complete Developer's Guide to Claude Code with MCP Servers</strong><br>
+  <em>Accelerate your development workflow with AI-powered coding assistance</em>
+</p>
