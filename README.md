@@ -32,17 +32,15 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 
 | Resource | Description | What You'll Learn |
 |----------|-------------|-------------------|
-| [🎯 **MCP Tips & Tricks Master Guide**](extra/mcp_tips_and_tricks_master_guide.md) ⭐ **FEATURED** | Complete guide with 100+ tips, tricks, and best practices | 5-minute setup, advanced configurations, performance optimization, troubleshooting, enterprise deployment, custom development |
-
-## 🚀 **Claude Code Specific MCPs**
+| [🎯 **MCP Tips & Tricks Master Guide**](extra/mcp_tips_and_tricks_master_guide.md)  | Complete guide with 100+ tips, tricks, and best practices | 5-minute setup, advanced configurations, performance optimization, troubleshooting, enterprise deployment, custom development |
 
 ### 🎯 Claude Code CLI Enhancement
 
 | MCP | Description | Key Features |
 |-----|-------------|--------------|
-| [Claude Code Plan Mode MCP](extra/claude_code_plan_mode_mcp.md) ⭐ **NEW** | Advanced planning capabilities for Claude Code | Research mode, implementation planning, risk assessment, strategic analysis |
-| [Claude Code Agent Creator MCP](extra/claude_code_agent_creator_mcp.md) ⭐ **NEW** | Create and manage specialized AI agents | Custom agent templates, multi-agent orchestration, agent lifecycle management |
-| [Claude Code Workflow Optimizer MCP](extra/claude_code_workflow_optimizer_mcp.md) ⭐ **NEW** | Analyze and optimize development workflows | Pattern recognition, bottleneck detection, automation suggestions |
+| [Claude Code Plan Mode MCP](extra/claude_code_plan_mode_mcp.md)   | Advanced planning capabilities for Claude Code | Research mode, implementation planning, risk assessment, strategic analysis |
+| [Claude Code Agent Creator MCP](extra/claude_code_agent_creator_mcp.md)   | Create and manage specialized AI agents | Custom agent templates, multi-agent orchestration, agent lifecycle management |
+| [Claude Code Workflow Optimizer MCP](extra/claude_code_workflow_optimizer_mcp.md)   | Analyze and optimize development workflows | Pattern recognition, bottleneck detection, automation suggestions |
 | [Steipete's Claude Code MCP](extra/steipete_claude_code_mcp.md) | Enhanced Claude Code integration | One-shot execution, permission bypass, advanced features |
 | [Auchenberg's Claude Code MCP](extra/auchenberg_claude_code_mcp.md) | Professional Claude Code server | Enterprise features, security enhancements, production-ready |
 
@@ -58,7 +56,7 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 
 | MCP | Description | Features |
 |-----|-------------|----------|
-| [Claude-Flow AI Agent MCP](extra/claude_flow_ai_agent_mcp.md) ⭐ | Ultimate multi-agent orchestration platform | Multi-agent coordination, workflow automation, Claude Code integration |
+| [Claude-Flow AI Agent MCP](extra/claude_flow_ai_agent_mcp.md)  | Ultimate multi-agent orchestration platform | Multi-agent coordination, workflow automation, Claude Code integration |
 | [MCP-Agent Framework](extra/mcp_agent_framework.md) | Complete framework for building AI agents | Agent lifecycle management, task delegation, result aggregation |
 | [Multi-Agent MCP](extra/multi_agent_mcp.md) | Sophisticated multi-agent coordination | Hierarchical organization, swarm intelligence, conflict resolution |
 | [Workflow Evaluator-Optimizer](extra/workflow_evaluator_optimizer_mcp.md) | Iterative workflow improvement | Performance analysis, optimization suggestions, automation |
@@ -70,8 +68,8 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 
 | MCP | Description | Key Capabilities |
 |-----|-------------|------------------|
-| [Filesystem MCP](extra/filesystem_mcp_complete.md) ⭐ | Complete file system operations | File/directory management, search, monitoring, batch operations |
-| [Git MCP](extra/git_mcp_complete.md) ⭐ | Comprehensive Git integration | Repository management, branching, merging, workflow automation |
+| [Filesystem MCP](extra/filesystem_mcp_complete.md)  | Complete file system operations | File/directory management, search, monitoring, batch operations |
+| [Git MCP](extra/git_mcp_complete.md)  | Comprehensive Git integration | Repository management, branching, merging, workflow automation |
 | [Memory MCP](extra/memory_mcp.md) | Persistent memory management | Long-term storage, context preservation, knowledge base |
 | [Fetch MCP](extra/fetch_mcp.md) | HTTP request handling | API calls, web requests, data fetching |
 
@@ -169,18 +167,18 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 
 | MCP | Description | Key Features |
 |-----|-------------|--------------|
-| [MCP Testing Framework](extra/mcp_testing_framework.md) ⭐ **NEW** | Comprehensive testing suite for MCP development | Unit testing, integration testing, performance testing, security validation |
-| [MCP Development Kit](extra/mcp_development_kit.md) ⭐ **NEW** | Complete toolkit for building custom MCPs | Project scaffolding, code generation, templates, development server |
-| [MCP Debugger](extra/mcp_debugger.md) ⭐ **NEW** | Advanced debugging capabilities for MCPs | Real-time debugging, breakpoints, performance monitoring, error analysis |
-| [MCP Performance Profiler](extra/mcp_performance_profiler.md) ⭐ **NEW** | Performance analysis and optimization tools | CPU profiling, memory analysis, bottleneck detection, optimization suggestions |
-| [MCP Security Scanner](extra/mcp_security_scanner.md) ⭐ **NEW** | Security analysis and vulnerability detection | Security scanning, vulnerability assessment, compliance checking |
-| [MCP Code Generator](extra/mcp_code_generator.md) ⭐ **NEW** | Automated code generation for MCP development | Handler generation, schema creation, boilerplate automation |
-| [MCP Documentation Generator](extra/mcp_documentation_generator.md) ⭐ **NEW** | Automatic documentation generation | API docs, README generation, example creation, interactive documentation |
-| [MCP Validator](extra/mcp_validator.md) ⭐ **NEW** | MCP protocol compliance validation | Schema validation, protocol compliance, best practices checking |
-| [MCP Package Manager](extra/mcp_package_manager.md) ⭐ **NEW** | Package management for MCP ecosystem | Dependency management, version control, distribution, marketplace integration |
-| [MCP Monitoring Tools](extra/mcp_monitoring_tools.md) ⭐ **NEW** | Production monitoring and observability | Health monitoring, metrics collection, alerting, dashboard creation |
-| [MCP Integration Templates](extra/mcp_integration_templates.md) ⭐ **NEW** | Ready-to-use integration templates | IDE templates, CI/CD templates, deployment templates, configuration examples |
-| [MCP Deployment Automation](extra/mcp_deployment_automation.md) ⭐ **NEW** | Automated deployment and distribution | CI/CD integration, automated testing, deployment pipelines, release management |
+| [MCP Testing Framework](extra/mcp_testing_framework.md)   | Comprehensive testing suite for MCP development | Unit testing, integration testing, performance testing, security validation |
+| [MCP Development Kit](extra/mcp_development_kit.md)   | Complete toolkit for building custom MCPs | Project scaffolding, code generation, templates, development server |
+| [MCP Debugger](extra/mcp_debugger.md)   | Advanced debugging capabilities for MCPs | Real-time debugging, breakpoints, performance monitoring, error analysis |
+| [MCP Performance Profiler](extra/mcp_performance_profiler.md)   | Performance analysis and optimization tools | CPU profiling, memory analysis, bottleneck detection, optimization suggestions |
+| [MCP Security Scanner](extra/mcp_security_scanner.md)   | Security analysis and vulnerability detection | Security scanning, vulnerability assessment, compliance checking |
+| [MCP Code Generator](extra/mcp_code_generator.md)   | Automated code generation for MCP development | Handler generation, schema creation, boilerplate automation |
+| [MCP Documentation Generator](extra/mcp_documentation_generator.md)   | Automatic documentation generation | API docs, README generation, example creation, interactive documentation |
+| [MCP Validator](extra/mcp_validator.md)   | MCP protocol compliance validation | Schema validation, protocol compliance, best practices checking |
+| [MCP Package Manager](extra/mcp_package_manager.md)   | Package management for MCP ecosystem | Dependency management, version control, distribution, marketplace integration |
+| [MCP Monitoring Tools](extra/mcp_monitoring_tools.md)   | Production monitoring and observability | Health monitoring, metrics collection, alerting, dashboard creation |
+| [MCP Integration Templates](extra/mcp_integration_templates.md)   | Ready-to-use integration templates | IDE templates, CI/CD templates, deployment templates, configuration examples |
+| [MCP Deployment Automation](extra/mcp_deployment_automation.md)   | Automated deployment and distribution | CI/CD integration, automated testing, deployment pipelines, release management |
 
 ## 🔧 Advanced Tools & Utilities
 
@@ -197,7 +195,7 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 
 | Resource | Description | Content |
 |----------|-------------|---------|
-| [🎯 **MCP Tips & Tricks Master Guide**](extra/mcp_tips_and_tricks_master_guide.md) ⭐ **FEATURED** | Ultimate guide with 100+ tips and best practices | Setup, optimization, troubleshooting, enterprise deployment |
+| [🎯 **MCP Tips & Tricks Master Guide**](extra/mcp_tips_and_tricks_master_guide.md)  | Ultimate guide with 100+ tips and best practices | Setup, optimization, troubleshooting, enterprise deployment |
 | [Building Custom MCPs](extra/building_custom_mcps.md) | MCP development guide | Creation, testing, deployment |
 | [Security Considerations](extra/security_considerations.md) | Security best practices | Authentication, authorization, compliance |
 | [IDE Integrations](extra/ide_integrations.md) | Development environment setup | VS Code, IntelliJ, other IDEs |
