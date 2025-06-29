@@ -1,4 +1,4 @@
-# 🤖 Claude Code MCP Repository
+## Claude Code MCP Repository
 
 > **The ultimate collection of Claude Code Model Context Protocol (MCP) integrations with verified links, comprehensive documentation, and advanced Claude Code specific tools.**
 
