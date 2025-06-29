@@ -1,23 +1,6 @@
-# 🚀 MCP Tips and Tricks - Master Guide
+## MCP Tips and Tricks - Master Guide
 
 > **The ultimate collection of tips, tricks, best practices, and advanced techniques for Claude Code Model Context Protocol (MCP) integrations.**
-
-## 📚 Table of Contents
-
-1. [Quick Start & Setup](#quick-start--setup)
-2. [Essential Tips for Beginners](#essential-tips-for-beginners)
-3. [Advanced Configuration Techniques](#advanced-configuration-techniques)
-4. [Performance Optimization](#performance-optimization)
-5. [Security Best Practices](#security-best-practices)
-6. [Troubleshooting Guide](#troubleshooting-guide)
-7. [Advanced Workflows](#advanced-workflows)
-8. [Multi-MCP Orchestration](#multi-mcp-orchestration)
-9. [Custom MCP Development](#custom-mcp-development)
-10. [Enterprise Deployment](#enterprise-deployment)
-11. [Monitoring & Maintenance](#monitoring--maintenance)
-12. [Community Resources](#community-resources)
-
----
 
 ## 🚀 Quick Start & Setup
 
