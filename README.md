@@ -211,19 +211,6 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 | [Serverman](extra/serverman.md) | Server management utilities | Process management, monitoring, automation |
 | [Web MCP](extra/web_mcp.md) | Web development utilities | HTTP servers, API testing, web automation |
 
-##  What Each Documentation Includes
-
-Every MCP documentation in the `extra/` folder provides:
-
-- ✅ **Complete Installation Guide** - Multiple methods, prerequisites, verification
-- ✅ **Comprehensive Commands** - 50-100+ commands with examples
-- ✅ **Real-World Usage Examples** - Practical scenarios and workflows
-- ✅ **Advanced Configuration** - Customization and optimization
-- ✅ **Editing & Scripting** - Custom automation and features
-- ✅ **Troubleshooting** - Common issues and solutions
-- ✅ **Security & Best Practices** - Enterprise-ready configurations
-- ✅ **Performance Optimization** - Monitoring and tuning guides
-- ✅ **API Reference** - Complete technical documentation
 
 ##  Getting Started
 
@@ -234,34 +221,8 @@ Every MCP documentation in the `extra/` folder provides:
 5. **🛠️ Configure Claude Desktop** with the provided examples
 6. **🎉 Start using** your enhanced Claude Code setup!
 
-## 🌟 What's New
-
-###  Latest Additions
-- ** Claude Code Plan Mode MCP** - Advanced planning and analysis capabilities for Claude Code
-- **🤖 Claude Code Agent Creator MCP** - Create and manage specialized AI agents within Claude Code
-- **Claude Code Workflow Optimizer MCP** - Analyze and optimize development workflows
-- **📚 Enhanced Documentation** - All MCPs now include verified links and complete guides
-- **🔧 Advanced Configuration Examples** - Enterprise-ready configurations and optimizations
-
-### 📊 Repository Statistics
-- **120+ MCP Implementations** documented
-- **Complete Installation Guides** for every MCP
-- **1000+ Commands & Examples** across all MCPs
-- **Advanced Configuration Patterns** for enterprise use
-- **Comprehensive Troubleshooting** for all implementations
-- **100% Verified Links** - every link tested and working
-
-## 🤝 Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-**🌟 Made with ❤️ by the Claude Code community**
 
 *Click any MCP link above for complete documentation, installation guides, and usage examples. Start with our [Master Tips & Tricks Guide](extra/mcp_tips_and_tricks_master_guide.md) for the best experience!*
 
