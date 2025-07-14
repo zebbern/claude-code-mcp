@@ -1,6 +1,3 @@
-# Claude Code MCP Installation and Usage Guide
-
-A comprehensive guide for installing and using Model Context Protocol (MCP) servers with Claude Code, suitable for both beginners and experienced users.
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
