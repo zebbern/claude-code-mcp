@@ -1,13 +1,10 @@
 # Claude Code MCP Setup Guide
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MCP Version](https://img.shields.io/badge/MCP-Protocol-blue)](https://modelcontextprotocol.io)
+[![Claude Code](https://img.shields.io/badge/Claude-Code-orange)](https://docs.anthropic.com/en/docs/claude-code)
+
 A practical guide for setting up Model Context Protocol (MCP) servers with Claude Code.
-
-## Quick Start
-
-### Prerequisites
-- Claude Code installed (`claude /doctor` to verify)
-- Node.js and npm (`node --version` to verify)
-- Python with uvx for Python servers (optional)
 
 ### Basic Installation
 
