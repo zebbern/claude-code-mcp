@@ -27,8 +27,8 @@ claude mcp add github npx -y @modelcontextprotocol/server-github \
 | Filesystem | `claude mcp add fs npx -y @modelcontextprotocol/server-filesystem ~/path` | File access |
 | GitHub | `claude mcp add github npx -y @modelcontextprotocol/server-github -e GITHUB_PERSONAL_ACCESS_TOKEN=token` | Repo management |
 | PostgreSQL | `claude mcp add postgres npx -y @modelcontextprotocol/server-postgres "postgresql://..."` | Database queries |
-| Memory | `claude mcp add memory npx -y @modelcontextprotocol/server-memory` | Persistent context |
-| Slack | `claude mcp add slack npx -y @modelcontextprotocol/server-slack` | Team messaging |
+| Memory | `claude mcp add memory "npx -y @modelcontextprotocol/server-memory"` | Persistent context |
+| Slack | `claude mcp add slack "npx -y @modelcontextprotocol/server-slack"` | Team messaging |
 | Brave Search | `claude mcp add brave npx -y @modelcontextprotocol/server-brave-search -e BRAVE_API_KEY=key` | Web search |
 
 ## Server Scopes
