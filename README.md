@@ -6,10 +6,6 @@
 
 ![Claude Code](https://img.shields.io/npm/v/@anthropic-ai/claude-code?label=Claude%20Code)
 
-![Claude Code](https://img.shields.io/npm/v/@anthropic-ai/claude-code?style=flat-square)
-
-[![Claude Code](https://img.shields.io/npm/v/@anthropic-ai/claude-code)](https://www.npmjs.com/package/@anthropic-ai/claude-code)
-
 A practical guide for setting up Model Context Protocol (MCP) servers with Claude Code.
 
 ### Basic Installation
