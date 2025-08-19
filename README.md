@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/zebbern-claude-code-mcp-badge.png)](https://mseep.ai/app/zebbern-claude-code-mcp)
+
 # Claude Code MCP Setup Guide
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
