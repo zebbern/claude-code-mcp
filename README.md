@@ -12,8 +12,6 @@
 > **Install Claude Code** ⮞ <kbd>npm install -g @anthropic-ai/claude-code</kbd><br>
 > > <img width="505" height="120" alt="image" src="https://github.com/user-attachments/assets/97b930d0-1a1e-48d1-8c03-3d2f564f8137" />
 
-<br>
-
 > ### Official Docs You May Want:
 > 
 > > **[Build MCP Server](https://modelcontextprotocol.io/quickstart/server) | [Build MCP Client](https://modelcontextprotocol.io/quickstart/client) | [Server Examples](https://github.com/modelcontextprotocol/servers) | [Popular MCP servers](https://docs.anthropic.com/en/docs/claude-code/mcp)**
@@ -43,7 +41,7 @@ claude mcp list
 
 <table><td>
   
-### Command Line Addition 
+### 1. Command Line Addition 
 > **Claude Code provides simple command line tools to add MCP servers:**
 
 ```bash
@@ -61,7 +59,7 @@ claude mcp add api-server -e API_KEY=your-key-here -- /path/to/server
 
 <table><td>
 
-### Direct Configuration File Editing 
+### 2. Direct Configuration File Editing 
 > Many developers find CLI wizards too cumbersome, especially when you have to restart if you make a mistake.
 > 
 > Direct configuration file editing is more efficient:
@@ -97,7 +95,7 @@ claude mcp add api-server -e API_KEY=your-key-here -- /path/to/server
 </td></table>
 <table><td>
 
-### Project-level Configuration (Recommended for team collaboration)
+### 3. Project-level Configuration (Recommended for team collaboration)
 > If you want team members to all use the same MCP configuration:
 
 ```bash
