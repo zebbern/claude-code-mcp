@@ -1,123 +1,62 @@
-# Claude Code MCP Setup Guide
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![MCP Version](https://img.shields.io/badge/MCP-Protocol-blue)](https://modelcontextprotocol.io)
-[![Claude Code](https://img.shields.io/badge/Claude-Code-orange)](https://docs.anthropic.com/en/docs/claude-code)
+# MCP Server Setup Guide
+> This will help you install MCP (Model Context Protocol) servers to extend Claude Code's capabilities.
 
 ![Claude Code](https://img.shields.io/npm/v/@anthropic-ai/claude-code?label=Claude%20Code)
 
-A practical guide for setting up Model Context Protocol (MCP) servers with Claude Code.
 
-### Basic Installation
+### Prerequisites
+- Node.js 18+ installed
+- Claude Code installed
+- Terminal/Command Prompt access
 
-```bash
-# Add a filesystem server
-claude mcp add filesystem npx -y @modelcontextprotocol/server-filesystem ~/Documents
+### 1. Install MCP Servers
 
-# Add GitHub integration
-claude mcp add github npx -y @modelcontextprotocol/server-github \
-  -e GITHUB_PERSONAL_ACCESS_TOKEN=ghp_yourtoken
-
-# Check server status
-/mcp
-```
-
-## Common MCP Servers
-
-| Server | Installation | Purpose |
-|--------|-------------|---------|
-| Filesystem | `claude mcp add fs npx -y @modelcontextprotocol/server-filesystem ~/path` | File access |
-| GitHub | `claude mcp add github npx -y @modelcontextprotocol/server-github -e GITHUB_PERSONAL_ACCESS_TOKEN=token` | Repo management |
-| PostgreSQL | `claude mcp add postgres npx -y @modelcontextprotocol/server-postgres "postgresql://..."` | Database queries |
-| Memory | `claude mcp add memory "npx -y @modelcontextprotocol/server-memory"` | Persistent context |
-| Slack | `claude mcp add slack "npx -y @modelcontextprotocol/server-slack"` | Team messaging |
-| Brave Search | `claude mcp add brave npx -y @modelcontextprotocol/server-brave-search -e BRAVE_API_KEY=key` | Web search |
-
-## Server Scopes
-
-- **Local** (default): Current project only
-- **Project** (`-s project`): Team shared via `.mcp.json`  
-- **User** (`-s user`): All your projects
-
-## Team Setup
-
-1. Add servers with project scope:
-```bash
-claude mcp add github npx -y @modelcontextprotocol/server-github -s project
-```
-
-2. This creates `.mcp.json`:
-```json
-{
-  "mcpServers": {
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
-      }
-    }
-  }
-}
-```
-
-3. Create `.env.example`:
-```
-GITHUB_TOKEN=ghp_your_token_here
-DATABASE_URL=postgresql://user:pass@localhost:5432/db
-```
-
-4. Commit to version control:
-```bash
-git add .mcp.json .env.example
-echo ".env" >> .gitignore
-git commit -m "Add MCP configuration"
-```
-
-## Usage in Claude Code
-
-- `/mcp` - Check server status
-- `/mcp__servername__command` - Use server commands
-- `@servername:resource` - Access server resources
-
-## Managing Servers
+Copy and paste these commands one by one:
 
 ```bash
-claude mcp list                    # List all servers
-claude mcp get servername          # Get server details
-claude mcp remove servername       # Remove a server
-claude mcp reset-project-choices   # Reset project approvals
+# Install all MCP servers
+npm install -g websearch-mcp
+npm install -g @modelcontextprotocol/server-filesystem
+npm install -g bash-mcp
+npm install -g @playwright/mcp
+npm install -g better-qdrant-mcp-server
+npm install -g @upstash/context7-mcp
 ```
 
-## Troubleshooting
+### 2. Add Servers to Claude Code
 
-### Logs
+Run these commands to configure each server:
+
 ```bash
-tail -f ~/.claude/logs/mcp-server-*.log
+# Add each MCP server 
+claude mcp add websearch npx websearch-mcp                                # Search the internet as Get current news, research topics 
+claude mcp add filesystem npx @modelcontextprotocol/server-filesystem /   # Access files/folders / Read, write, organize files
+claude mcp add bash-runner npx bash-mcp                                   # Run shell commands / Execute scripts, system operations
+claude mcp add playwright npx @playwright/mcp                             # Control web browsers / Automate websites, scraping
+claude mcp add vectorstore npx better-qdrant-mcp-server                   # Semantic search / Find similar content, embeddings
+claude mcp add context7 npx @upstash/context7-mcp                         # Live documentation / `use context7` for updated docs
 ```
+> [!Note]
+> ### Verify Installation
+> 
+> *Check that all servers are working:*
+> 
+> ```bash
+> claude mcp list
+> ```
+> 
+> *You should see all servers with ✓ Connected status.*
+> 
+> ### Server not connecting?
+> **Restart Claude Code and try again**
+> ```bash
+> claude mcp list
+> claude mcp --help
+> claude --help
+> ```
+> 
+> **Permission errors?**
+> - Run terminal as administrator (Windows)
+> - Use `sudo` prefix (macOS/Linux)
 
-### Direct Config Edit
-Location: `~/.claude/.claude.json`
-
-### Common Issues
-- **"Command not found"**: Ensure npx is in PATH
-- **Server not showing**: Restart Claude Code
-- **Permission denied**: Run `claude /doctor`
-
-## Security
-
-⚠️ **Important**: 
-- Only use trusted MCP servers
-- Be cautious with internet-connected servers
-- Never commit API keys to version control
-- Use read-only database access where possible
-
-## Resources
-
-- [Official MCP Documentation](https://modelcontextprotocol.io)
-- [MCP Servers Repository](https://github.com/modelcontextprotocol/servers)
-- [Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code/mcp)
-
-## License
-
-This guide is provided under MIT License. MCP is open source by Anthropic.
