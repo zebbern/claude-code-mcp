@@ -1,146 +1,398 @@
-# MCP Server Setup Guide
-> Install Model Context Protocol (MCP) servers to extend **Claude Code**.
+<img align="right" src="https://img.shields.io/npm/v/@anthropic-ai/claude-code?label=Claude%20Code"/>
 
-![Claude Code](https://img.shields.io/npm/v/@anthropic-ai/claude-code?label=Claude%20Code)
-
-## Table of Contents
-- [Prerequisites](#prerequisites)
-- [Understanding MCP](#understanding-mcp)
-- [Installing MCP Servers](#installing-mcp-servers)
-- [Server Scopes](#server-scopes)
-- [Using MCP Servers](#using-mcp-servers)
-- [Official MCP Servers](#official-mcp-servers)
-- [Troubleshooting](#troubleshooting)
-- [Best Practices](#best-practices)
+# MCP Server Setup 
+> **Model Context Protocol (MCP)** lets tools run as separate _servers_ that Claude connects to at runtime. Each server exposes one or more capabilities (e.g., filesystem access, running shell commands, browser automation). You register a server with Claude, and Claude starts it with your specified command when needed.
 
 ---
 
-## Prerequisites
-- **Node.js 18+** verify with:
-  ```bash
-  node -v
-  ```
-- **Claude Code CLI** — install with:
-  ```bash
-  npm install -g @anthropic-ai/claude-code
-  ```
+> [!Important]
+> **Install Node.js 18+** ⮞ <kbd>node -v</kbd><br>
+> > <img width="209" height="47" alt="image" src="https://github.com/user-attachments/assets/44107d4b-c92b-49e3-a721-8ec8d0c5b854" />
+>  
+> **Install Claude Code** ⮞ <kbd>npm install -g @anthropic-ai/claude-code</kbd><br>
+> > <img width="505" height="120" alt="image" src="https://github.com/user-attachments/assets/97b930d0-1a1e-48d1-8c03-3d2f564f8137" />
 
----
+<br>
 
-## Understanding MCP
-**Model Context Protocol (MCP)** lets tools run as separate _servers_ that Claude connects to at runtime. Each server exposes one or more capabilities (e.g., filesystem access, running shell commands, browser automation). You register a server with Claude, and Claude starts it with your specified command when needed.
+> ### Official Docs You May Want:
+> 
+> > **[Build MCP Server](https://modelcontextprotocol.io/quickstart/server) | [Build MCP Client](https://modelcontextprotocol.io/quickstart/client) | [Server Examples](https://github.com/modelcontextprotocol/servers) | [Popular MCP servers](https://docs.anthropic.com/en/docs/claude-code/mcp)**
 
-Key ideas:
-- **Server**: a process Claude launches (e.g., `npx -y @modelcontextprotocol/server-filesystem`).
-- **Transport**: how Claude talks to the server (stdio by default).
-- **Scope**: where the server registration is stored (user-wide or per-project).
 
----
+> ### Community Docs You May Want:
+> 
+> > Adding soon..
 
-## Installing MCP Servers
-> You can use `npx` (no global install required). If you prefer global installs:
+<table><td>
+  
+## Quick Start
+> **If you're in a hurry, here's the fastest way to add:**
 
 ```bash
-npm install -g @modelcontextprotocol/server-filesystem bash-mcp @playwright/mcp \
-  better-qdrant-mcp-server @upstash/context7-mcp websearch-mcp
-```
+# Add file system access (most commonly used)
+claude mcp add filesystem -s user -- npx -y @modelcontextprotocol/server-filesystem ~/Documents ~/Desktop
 
-Register servers with **`claude mcp add`**. The `--` **separator is required** everything after it is the command Claude will run.
-
-```bash
-# Filesystem — grant access to specific folders (avoid "/")
-claude mcp add filesystem --scope user -- npx -y @modelcontextprotocol/server-filesystem \
-  ~/Documents ~/Desktop ~/Projects
-
-# Bash — executes shell commands (enable only on trusted projects)
-claude mcp add bash-runner --scope user -- npx -y bash-mcp
-
-# Playwright — control browsers / automate sites
-claude mcp add playwright --scope user -- npx -y @playwright/mcp@latest
-
-# WebSearch — requires a running crawler API at API_URL
-claude mcp add websearch --scope user \
-  --env API_URL=https://YOUR-CRAWLER-URL \
-  -- npx -y websearch-mcp
-
-# Qdrant vector store — semantic search (set endpoint & key if required)
-claude mcp add vectorstore --scope user \
-  --env QDRANT_URL=http://localhost:6333 \
-  # optional: --env QDRANT_API_KEY=YOUR_QDRANT_API_KEY \
-  -- npx -y better-qdrant-mcp-server
-
-# Context7 — live documentation / context stream (API key recommended)
-claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp --api-key YOUR_CONTEXT7_API_KEY
-```
-
----
-
-## Server Scopes
-- **User scope** (`--scope user`): available in all projects on this machine/account.
-- **Project scope** (omit `--scope`): stored locally for the current project/directory only.
-- You can **remove** a server later:
-  ```bash
-  claude mcp remove <name>
-  ```
-
----
-
-## Using MCP Servers
-Check status and details:
-```bash
-claude mcp list
-claude mcp info <name>
-```
-
-Typical usage patterns in Claude:
-- **Filesystem**: “Open `~/Projects/app/config.json` and show me the contents.”
-- **Bash**: “Run `npm test` and return the output.”
-- **Playwright**: “Visit `https://example.com`, click ‘Login’, and take a screenshot.”
-- **Vectorstore (Qdrant)**: “Embed and upsert these docs, then search for similar passages.”
-- **WebSearch**: “Search for recent articles on WebGPU and summarize the top three.”
-- **Context7**: “Stream the latest docs for package `xyz` into this workspace.”
-
----
-
-## Official MCP Servers
-Packages maintained under the **`@modelcontextprotocol`** scope are considered official. Common ones include:
-- `@modelcontextprotocol/server-filesystem` — Read/write specific directories you allow.
-
-> Other servers in this guide (e.g., `bash-mcp`, `@playwright/mcp`, `better-qdrant-mcp-server`, `@upstash/context7-mcp`, `websearch-mcp`) are community or vendor-maintained and widely used, but not under the `@modelcontextprotocol` org.
-
----
-
-## Troubleshooting
-- **Server shows “Not Connected”**
-  ```bash
-  # Restart and recheck
-  claude mcp list
-  claude mcp --help
-  claude --help
-  ```
-- **Permissions / Access denied**
-  - macOS/Linux: try prefixing with `sudo` where appropriate.
-  - Windows: run terminal as **Administrator**.
-- **WebSearch won’t connect**
-  - Ensure your crawler service is running and reachable at `API_URL`.
-- **Qdrant errors**
-  - Verify `QDRANT_URL` and any required `QDRANT_API_KEY`.
-- **Playwright prompts during setup**
-  - Use `@latest` and `-y` in the add command to auto-accept prompts.
-
----
-
-## Best Practices
-- **Least privilege**: Grant the filesystem server only the folders you need—avoid `/`.
-- **Be cautious with Bash**: Treat it like a terminal; enable only for trusted codebases.
-- **Pin versions when collaborating**: e.g., `@playwright/mcp@<version>` for deterministic setups.
-- **Use project scope for untrusted repos**: Keep powerful servers out of global scope if unsure.
-- **Document env vars**: Check them into `.env.example` (never real secrets).
-
----
-
-### Quick Verify
-```bash
+# Verify if successful
 claude mcp list
 ```
-You should see each configured server with a ✓ **Connected** status once it starts successfully.
+> **Responce if it worked like it should:**
+<img width="868" height="192" alt="image" src="https://github.com/user-attachments/assets/8e7b23c7-ccfb-49aa-9203-e37f07c2514e" />
+</td></table>
+
+## Additional Methods:
+
+<table><td>
+  
+### Command Line Addition 
+> **Claude Code provides simple command line tools to add MCP servers:**
+
+```bash
+# Basic syntax
+claude mcp add <name> <command> [parameters...]
+
+# Actual example: Add local file system access
+claude mcp add my-filesystem -- npx -y @modelcontextprotocol/server-filesystem ~/Documents
+
+# Example with environment variables
+claude mcp add api-server -e API_KEY=your-key-here -- /path/to/server
+```
+
+</td></table>
+
+<table><td>
+
+### Direct Configuration File Editing 
+> Many developers find CLI wizards too cumbersome, especially when you have to restart if you make a mistake.
+> 
+> Direct configuration file editing is more efficient:
+
+**1. Find configuration file location:**
+- macOS/Linux: `~/.claude.json`
+- Windows: `%USERPROFILE%\.claude.json`
+
+**2. Edit configuration file:**
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/username/Documents"],
+      "env": {}
+    },
+    "github": {
+      "type": "stdio", 
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your-github-token"
+      }
+    }
+  }
+}
+```
+**3. Restart Claude Code to take effect**
+
+</td></table>
+<table><td>
+
+### Project-level Configuration (Recommended for team collaboration)
+> If you want team members to all use the same MCP configuration:
+
+```bash
+# Add project-level MCP server
+claude mcp add shared-tools -s project -- npx -y @your-team/mcp-tools
+```
+
+**This will create a `.mcp.json` file in the project root directory:**
+
+```json
+{
+  "mcpServers": {
+    "shared-tools": {
+      "command": "npx",
+      "args": ["-y", "@your-team/mcp-tools"],
+      "env": {}
+    }
+  }
+}
+```
+
+</td></table>
+
+## MCP Server Scope Detailed
+
+Understanding scope is crucial to avoid "server not found" errors:
+
+### 1. Local Scope (Default)
+- Only available in current directory
+- Configuration stored in the projects section of `~/.claude.json`
+- Suitable for: Personal project-specific tools
+
+### 2. User Scope (Global)
+- Available in all projects
+- Added using `-s user` flag
+- Suitable for: Common tools like file systems, database clients
+
+### 3. Project Scope (Team shared)
+- Shared through `.mcp.json` file
+- Added using `-s project` flag
+- Suitable for: Team-shared project-specific tools
+
+## Practical MCP Server Recommendations
+> **Here's the most worthwhile MCP server list to install:**
+
+### 1. File System Access
+```bash
+claude mcp add filesystem -s user -- npx -y @modelcontextprotocol/server-filesystem ~/Documents ~/Projects ~/Desktop
+```
+Use: Let Claude directly read and write files, modify code
+
+### 2. GitHub Integration
+```bash
+claude mcp add github -s user -e GITHUB_TOKEN=your-token -- npx -y @modelcontextprotocol/server-github
+```
+Use: Manage issues, PRs, code reviews
+
+### 3. Web Browser Control
+```bash
+claude mcp add puppeteer -s user -- npx -y @modelcontextprotocol/server-puppeteer
+```
+Use: Automated web operations, crawling, testing
+
+### 4. Database Connection (PostgreSQL)
+```bash
+claude mcp add postgres -s user -e DATABASE_URL=your-db-url -- npx -y @modelcontextprotocol/server-postgres
+```
+Use: Directly query and manipulate databases
+
+### 5. Fetch Tool (API Calls)
+```bash
+claude mcp add fetch -s user -- npx -y @kazuph/mcp-fetch
+```
+Use: Call various REST APIs
+
+### 6. Search Engine
+```bash
+claude mcp add search -s user -e BRAVE_API_KEY=your-key -- npx -y @modelcontextprotocol/server-brave-search
+```
+Use: Search for latest information
+
+### 7. Slack Integration
+```bash
+claude mcp add slack -s user -e SLACK_TOKEN=your-token -- npx -y @modelcontextprotocol/server-slack
+```
+Use: Send messages, manage channels
+
+### 8. Time Management
+```bash
+claude mcp add time -s user -- npx -y @modelcontextprotocol/server-time
+```
+Use: Time zone conversion, date calculation
+
+### 9. Memory Storage
+```bash
+claude mcp add memory -s user -- npx -y @modelcontextprotocol/server-memory
+```
+Use: Save information across conversations
+
+### 10. Sequential Thinking (Thought Chain)
+```bash
+claude mcp add thinking -s user -- npx -y @modelcontextprotocol/server-sequential-thinking
+```
+Use: Step-by-step thinking for complex problems
+
+## Common Errors and Solutions
+
+### Error 1: Tool Name Validation Failed
+```
+API Error 400: "tools.11.custom.name: String should match pattern '^[a-zA-Z0-9_-]{1,64}$'"
+```
+
+**Solution**:
+- Ensure server name only contains letters, numbers, underscores and hyphens
+- Name length should not exceed 64 characters
+- Don't use special characters or spaces
+
+### Error 2: MCP Server Not Found
+```
+MCP server 'my-server' not found
+```
+
+**Solution**:
+1. Check if scope settings are correct
+2. Run `claude mcp list` to confirm server has been added
+3. Ensure you're in the correct directory (for local scope)
+4. Restart Claude Code
+
+### Error 3: Protocol Version Error
+```
+"protocolVersion": "Required"
+```
+
+**Solution**: This is a known bug in Claude Code, temporary solutions:
+1. Use wrapper scripts
+2. Ensure MCP server returns correct protocol version
+3. Update to latest version of Claude Code
+
+### Error 4: Windows Path Issues
+```
+Error: Cannot find module 'C:UsersusernameDocuments'
+```
+
+**Solution**: Windows paths need to use forward slashes or double backslashes:
+
+```bash
+# Wrong
+claude mcp add fs -- npx -y @modelcontextprotocol/server-filesystem C:\Users\username\Documents
+
+# Correct
+claude mcp add fs -- npx -y @modelcontextprotocol/server-filesystem C:/Users/username/Documents
+# or
+claude mcp add fs -- npx -y @modelcontextprotocol/server-filesystem C:\\Users\\username\\Documents
+```
+
+### Error 5: Permission Issues
+```
+Permission denied
+```
+
+**Solution**:
+1. macOS/Linux: Use `sudo` (not recommended) or modify file permissions
+2. Windows: Run as administrator
+3. Best method: Install MCP servers in user directory
+
+## Debugging Techniques
+
+When encountering problems, these debugging methods can help you quickly locate issues:
+
+### 1. Enable Debug Mode
+```bash
+claude --mcp-debug
+```
+
+### 2. View MCP Status
+In Claude Code, enter:
+```
+/mcp
+```
+
+### 3. View Log Files
+
+**macOS/Linux:**
+```bash
+tail -f ~/Library/Logs/Claude/mcp*.log
+```
+
+**Windows:**
+```cmd
+type "%APPDATA%\Claude\logs\mcp*.log"
+```
+
+### 4. Manually Test Server
+```bash
+# Directly run server command to see if there's output
+npx -y @modelcontextprotocol/server-filesystem ~/Documents
+```
+
+## Special Notes for International Users
+
+### 1. Non-English Path Issues
+Avoid using non-English characters in paths:
+
+```bash
+# Avoid
+claude mcp add fs -- npx -y @modelcontextprotocol/server-filesystem ~/文档
+
+# Recommended
+claude mcp add fs -- npx -y @modelcontextprotocol/server-filesystem ~/Documents
+```
+
+### 2. Proxy Configuration
+If you're using a proxy:
+
+```bash
+# Set npm proxy
+npm config set proxy http://your-proxy:port
+npm config set https-proxy http://your-proxy:port
+
+# Then add MCP server
+claude mcp add ...
+```
+
+### 3. Mirror Sources
+Use mirror sources to accelerate downloads:
+
+```bash
+# Temporary use
+claude mcp add fs -- npx -y --registry=https://registry.npmjs.org @modelcontextprotocol/server-filesystem ~/Documents
+
+# Or permanent setting
+npm config set registry https://registry.npmjs.org
+```
+
+## Best Practice Recommendations
+
+1. **Add as needed**: Don't add too many MCP servers at once, it will affect performance
+2. **Regular cleanup**: Use `claude mcp remove <name>` to delete unused servers
+3. **Security first**: Only add trusted MCP servers, especially those requiring network access
+4. **Backup configuration**: Regularly backup `~/.claude.json` file
+5. **Team collaboration**: Use project scope to share common configurations
+
+## Advanced Techniques
+
+### 1. Create Custom MCP Server
+
+If existing MCP servers can't meet your needs, you can create your own:
+
+```javascript
+// my-mcp-server.js
+import { Server } from '@modelcontextprotocol/sdk';
+
+const server = new Server({
+  name: 'my-custom-server',
+  version: '1.0.0',
+});
+
+server.setRequestHandler('tools/list', async () => {
+  return {
+    tools: [{
+      name: 'my_custom_tool',
+      description: 'Custom tool',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          input: { type: 'string' }
+        }
+      }
+    }]
+  };
+});
+
+server.start();
+```
+
+### 2. Batch Configuration Script
+
+Create a script to configure all common MCP servers at once:
+
+```bash
+#!/bin/bash
+# setup-mcp.sh
+
+echo "Configuring common MCP servers..."
+
+# File system
+claude mcp add filesystem -s user -- npx -y @modelcontextprotocol/server-filesystem ~/Documents ~/Projects
+
+# GitHub
+read -p "Enter GitHub Token: " github_token
+claude mcp add github -s user -e GITHUB_TOKEN=$github_token -- npx -y @modelcontextprotocol/server-github
+
+# Other servers...
+
+echo "MCP servers configured successfully!"
+```
+
+
